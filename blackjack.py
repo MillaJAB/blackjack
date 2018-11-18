@@ -22,7 +22,7 @@ class Deck:
 			for rank in ranks:
 				pass
 	def __str__(self):
-		print("Some bullshit")
+		return "Some bullshit"
 	def shuffle(self):
 		random.shuffle(self.deck)
 	def deal(self):
