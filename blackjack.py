@@ -20,13 +20,15 @@ class Deck:
 		self.deck = []
 		for suit in suits:
 			for rank in ranks:
-				pass
+				self.deck.append(Card(suit, rank))
 	def __str__(self):
 		return "Some bullshit"
 	def shuffle(self):
 		random.shuffle(self.deck)
 	def deal(self):
 		pass
+	def checkDeck(self):
+		print(self.deck)
 
 test_deck = Deck()
 print(test_deck)
