@@ -22,7 +22,7 @@ class Deck:
 			for rank in ranks:
 				self.deck.append(Card(suit, rank))
 	def __str__(self):
-		return "Some bullshit"
+		return "{}".format(self.deck[0])
 	def shuffle(self):
 		random.shuffle(self.deck)
 	def deal(self):
@@ -31,4 +31,7 @@ class Deck:
 		print(self.deck)
 
 test_deck = Deck()
+
 print(test_deck)
+
+print(len(test_deck.deck))
