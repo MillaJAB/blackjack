@@ -12,9 +12,6 @@ class Card:
 	def __str__(self):
 		return "{}".format(self.rank) + " of " + "{}".format(self.suit)
 
-#blah = Card('Spades', 'Ace')
-#print(blah)
-
 class Deck:
 	def __init__(self):
 		self.deck = []
@@ -22,23 +19,18 @@ class Deck:
 			for rank in ranks:
 				self.deck.append(Card(suit, rank))
 	def __str__(self):
-		for card in range(0, 52):
-			print( "{}".format(self.deck[card]))
+		deck_comp = ""
+		for card in self.deck:
+			deck_comp += '\n' + card.__str__()
+		return "The deck has" + deck_comp
 	def shuffle(self):
 		random.shuffle(self.deck)
 	def deal(self):
-		print(self.deck.pop(0))
+		single_card = self.deck.pop(0)
+		return single_card
 	def checkDeck(self):
 		print(self.deck)
 
 test_deck = Deck()
-
-print(test_deck.deck[0])
-
-print(len(test_deck.deck))
-
 test_deck.shuffle()
-test_deck.deal()
-print(len(test_deck.deck))
-
-test_deck.checkDeck()
+print(test_deck)
