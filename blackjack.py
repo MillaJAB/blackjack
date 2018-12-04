@@ -22,16 +22,23 @@ class Deck:
 			for rank in ranks:
 				self.deck.append(Card(suit, rank))
 	def __str__(self):
-		return "{}".format(self.deck[0])
+		for card in range(0, 52):
+			print( "{}".format(self.deck[card]))
 	def shuffle(self):
 		random.shuffle(self.deck)
 	def deal(self):
-		pass
+		print(self.deck.pop(0))
 	def checkDeck(self):
 		print(self.deck)
 
 test_deck = Deck()
 
-print(test_deck)
+print(test_deck.deck[0])
 
 print(len(test_deck.deck))
+
+test_deck.shuffle()
+test_deck.deal()
+print(len(test_deck.deck))
+
+test_deck.checkDeck()
