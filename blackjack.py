@@ -31,6 +31,25 @@ class Deck:
 	def checkDeck(self):
 		print(self.deck)
 
-test_deck = Deck()
-test_deck.shuffle()
-print(test_deck)
+# test_deck = Deck()
+# test_deck.shuffle()
+# print(test_deck)
+
+class Hand:
+	def __init__(self):
+		self.card = []
+		self.value = 0
+		self.aces = 0
+	def add_card(self, card):
+		pass
+	def adjust_for_ace(self):
+		pass
+
+class Chips:
+	def __init__(self):
+		self.total = 100
+		self.bet = 0
+	def win_bet(self):
+		pass
+	def lose_bet(self):
+		pass
