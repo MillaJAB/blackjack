@@ -54,10 +54,26 @@ class Chips:
 	def lose_bet(self):
 		pass
 
-
 test_deck = Deck()
 my_hand = Hand()
 dealer_hand = Hand()
-test_deck.shuffle()
-my_hand.card.append(test_deck.deal())
-print(my_hand.card[0])
+
+def startGame():
+	test_deck.shuffle()
+	my_hand.card.append(test_deck.deal())
+	dealer_hand.card.append(test_deck.deal())
+	my_hand.card.append(test_deck.deal())
+	dealer_hand.card.append(test_deck.deal())
+
+	# Comment out when not debugging
+	print("My first card is ")
+	print(my_hand.card[0])
+	print("My second card is ")
+	print(my_hand.card[1])	
+	print("The dealer's first card is ")
+	print(dealer_hand.card[0])	
+	print("The dealer's second card is ")
+	print(dealer_hand.card[1])		
+
+
+startGame()
