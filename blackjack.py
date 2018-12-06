@@ -38,7 +38,7 @@ class Hand:
 		self.card = []
 		self.value = 0
 		self.aces = 0
-	def add_card(self, card):
+	def add_card(self, single_card):
 		self.card.append(single_card)
 		return self.card
 	def adjust_for_ace(self):
@@ -60,10 +60,10 @@ dealer_hand = Hand()
 
 def startGame():
 	test_deck.shuffle()
-	my_hand.card.append(test_deck.deal())
-	dealer_hand.card.append(test_deck.deal())
-	my_hand.card.append(test_deck.deal())
-	dealer_hand.card.append(test_deck.deal())
+	my_hand.add_card(test_deck.deal())
+	dealer_hand.add_card(test_deck.deal())
+	my_hand.add_card(test_deck.deal())
+	dealer_hand.add_card(test_deck.deal())
 
 	# Comment out when not debugging
 	print("My first card is ")
