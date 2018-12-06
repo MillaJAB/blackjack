@@ -12,6 +12,7 @@ class Card:
 	def __str__(self):
 		return "{}".format(self.rank) + " of " + "{}".format(self.suit)
 
+
 class Deck:
 	def __init__(self):
 		self.deck = []
@@ -31,9 +32,6 @@ class Deck:
 	def checkDeck(self):
 		print(self.deck)
 
-# test_deck = Deck()
-# test_deck.shuffle()
-# print(test_deck)
 
 class Hand:
 	def __init__(self):
@@ -41,9 +39,11 @@ class Hand:
 		self.value = 0
 		self.aces = 0
 	def add_card(self, card):
-		pass
+		self.card.append(single_card)
+		return self.card
 	def adjust_for_ace(self):
 		pass
+
 
 class Chips:
 	def __init__(self):
@@ -53,3 +53,11 @@ class Chips:
 		pass
 	def lose_bet(self):
 		pass
+
+
+test_deck = Deck()
+my_hand = Hand()
+dealer_hand = Hand()
+test_deck.shuffle()
+my_hand.card.append(test_deck.deal())
+print(my_hand.card[0])
