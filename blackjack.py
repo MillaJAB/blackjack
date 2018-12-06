@@ -65,6 +65,14 @@ def startGame():
 	my_hand.add_card(test_deck.deal())
 	dealer_hand.add_card(test_deck.deal())
 
+def calculateHands():
+	for card in my_hand.card:
+		my_hand.value += values[card.rank]
+	print(my_hand.value)
+	for card in dealer_hand.card:
+		dealer_hand.value += values[card.rank]
+	print(dealer_hand.value)
+
 	# Comment out when not debugging
 	print("My first card is ")
 	print(my_hand.card[0])
@@ -77,3 +85,4 @@ def startGame():
 
 
 startGame()
+calculateHands()
