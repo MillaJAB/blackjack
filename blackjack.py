@@ -57,32 +57,45 @@ class Chips:
 test_deck = Deck()
 my_hand = Hand()
 dealer_hand = Hand()
+my_chips = Chips()
 
 def startGame():
 	test_deck.shuffle()
-	bet()
+	my_chips.bet = bet()
+	print("The user has bet $" + my_chips.bet + ". The dealer deals two cards to each player\n")
 	my_hand.add_card(test_deck.deal())
 	dealer_hand.add_card(test_deck.deal())
 	my_hand.add_card(test_deck.deal())
 	dealer_hand.add_card(test_deck.deal())
 
 def calculateHands():
-	for card in my_hand.card:
-		my_hand.value += values[card.rank]
-	print(my_hand.value)
-	for card in dealer_hand.card:
-		dealer_hand.value += values[card.rank]
-	print(dealer_hand.value)
-
+	#probably need to reset value to zero before each calculation
 	print("Your two cards are ")
 	print(my_hand.card[0])
 	print(my_hand.card[1])
+	for card in my_hand.card:
+		my_hand.value += values[card.rank]
+	#Comment out unless to debug
+	print(my_hand.value)
+
 	print("\nThe dealer's is showing")
-	print(dealer_hand.card[0])			
+	print(dealer_hand.card[0])	
+	for card in dealer_hand.card:
+		dealer_hand.value += values[card.rank]
+	#Comment out unless to debug
+	print(dealer_hand.value)
+
+			
 
 def bet():
 	user_bet = input("How much would you like to wager? ")
 	return user_bet
 
+def hitOrStay():
+	while True:
+		user_choice = input("\nWould you like to hit or stay? ")
+		break
+
 startGame()
 calculateHands()
+hitOrStay()
