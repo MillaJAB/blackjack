@@ -69,8 +69,9 @@ def startGame():
 	dealer_hand.add_card(test_deck.deal())
 
 def calculateHands():
-	#probably need to reset value to zero before each calculation
-	print("Your two cards are ")
+	my_hand.value = 0
+	dealer_hand.value = 0
+	print("Your cards are ")
 	print(my_hand.card[0])
 	print(my_hand.card[1])
 	for card in my_hand.card:
@@ -94,7 +95,10 @@ def bet():
 def hitOrStay():
 	while True:
 		user_choice = input("\nWould you like to hit or stay? ")
-		break
+		if user_choice == "hit":
+			my_hand.add_card(test_deck.deal())
+			calculateHands()
+			break
 
 startGame()
 calculateHands()
