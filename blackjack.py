@@ -60,6 +60,7 @@ dealer_hand = Hand()
 
 def startGame():
 	test_deck.shuffle()
+	bet()
 	my_hand.add_card(test_deck.deal())
 	dealer_hand.add_card(test_deck.deal())
 	my_hand.add_card(test_deck.deal())
@@ -73,16 +74,15 @@ def calculateHands():
 		dealer_hand.value += values[card.rank]
 	print(dealer_hand.value)
 
-	# Comment out when not debugging
-	print("My first card is ")
+	print("Your two cards are ")
 	print(my_hand.card[0])
-	print("My second card is ")
-	print(my_hand.card[1])	
-	print("The dealer's first card is ")
-	print(dealer_hand.card[0])	
-	print("The dealer's second card is ")
-	print(dealer_hand.card[1])		
+	print(my_hand.card[1])
+	print("\nThe dealer's is showing")
+	print(dealer_hand.card[0])			
 
+def bet():
+	user_bet = input("How much would you like to wager? ")
+	return user_bet
 
 startGame()
 calculateHands()
