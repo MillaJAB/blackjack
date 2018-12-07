@@ -72,10 +72,11 @@ def calculateHands():
 	my_hand.value = 0
 	dealer_hand.value = 0
 	print("Your cards are ")
-	print(my_hand.card[0])
-	print(my_hand.card[1])
+	for card in range(len(my_hand.card)):
+		print(my_hand.card[card])
 	for card in my_hand.card:
 		my_hand.value += values[card.rank]
+
 	#Comment out unless to debug
 	print(my_hand.value)
 
@@ -83,6 +84,7 @@ def calculateHands():
 	print(dealer_hand.card[0])	
 	for card in dealer_hand.card:
 		dealer_hand.value += values[card.rank]
+		
 	#Comment out unless to debug
 	print(dealer_hand.value)
 
