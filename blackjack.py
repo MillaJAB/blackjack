@@ -59,6 +59,11 @@ my_hand = Hand()
 dealer_hand = Hand()
 my_chips = Chips()
 
+def resetDeckAndHands():
+	test_deck = Deck()
+	my_hand = Hand()
+	dealer_hand = Hand()
+
 def startGame():
 	test_deck.shuffle()
 	my_chips.bet = bet()
@@ -69,8 +74,7 @@ def startGame():
 	dealer_hand.add_card(test_deck.deal())
 
 def calculateHands():
-	my_hand.value = 0
-	dealer_hand.value = 0
+	resetValues()
 	print("Your cards are ")
 	for card in range(len(my_hand.card)):
 		print(my_hand.card[card])
@@ -84,11 +88,13 @@ def calculateHands():
 	print(dealer_hand.card[0])	
 	for card in dealer_hand.card:
 		dealer_hand.value += values[card.rank]
-		
+
 	#Comment out unless to debug
 	print(dealer_hand.value)
 
-			
+def resetValues():
+	my_hand.value = 0
+	dealer_hand.value = 0
 
 def bet():
 	user_bet = input("How much would you like to wager? ")
@@ -100,8 +106,22 @@ def hitOrStay():
 		if user_choice == "hit":
 			my_hand.add_card(test_deck.deal())
 			calculateHands()
-			break
+			checkBust()
 
-startGame()
-calculateHands()
-hitOrStay()
+def checkBust():
+	if my_hand.value > 21:
+		answer = input("BUST! Would you like to play again? ")
+		if answer == "yes":
+			resetValues()
+			playBlackjack()
+		elif answer == "no":
+			print("Thanks for playing!")
+		else:
+			checkBust()
+
+def playBlackjack():
+	startGame()
+	calculateHands()
+	hitOrStay()
+
+playBlackjack()
