@@ -100,12 +100,11 @@ def bet():
 	return user_bet
 
 def hitOrStay():
-	while True:
-		user_choice = input("\nWould you like to hit or stay? ")
-		if user_choice == "hit":
-			my_hand.add_card(test_deck.deal())
-			calculateHands()
-			checkBust()
+	user_choice = input("\nWould you like to hit or stay? ")
+	if user_choice == "hit":
+		my_hand.add_card(test_deck.deal())
+		calculateHands()
+		checkBust()
 
 def checkBust():
 	if my_hand.value > 21:
@@ -116,12 +115,12 @@ def checkBust():
 			playBlackjack()
 		elif answer == "no":
 			print("Thanks for playing!")
-		else:
-			checkBust()
+	else:
+		hitOrStay()
 
 def playBlackjack():
 	startGame()
 	calculateHands()
-	hitOrStay()
+	checkBust()
 
 playBlackjack()
