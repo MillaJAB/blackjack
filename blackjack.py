@@ -59,11 +59,6 @@ my_hand = Hand()
 dealer_hand = Hand()
 my_chips = Chips()
 
-def resetDeckAndHands():
-	test_deck = Deck()
-	my_hand = Hand()
-	dealer_hand = Hand()
-
 def startGame():
 	test_deck.shuffle()
 	my_chips.bet = bet()
@@ -96,6 +91,10 @@ def resetValues():
 	my_hand.value = 0
 	dealer_hand.value = 0
 
+def resetHands():
+	my_hand.card = []
+	dealer_hand.card = []
+
 def bet():
 	user_bet = input("How much would you like to wager? ")
 	return user_bet
@@ -113,6 +112,7 @@ def checkBust():
 		answer = input("BUST! Would you like to play again? ")
 		if answer == "yes":
 			resetValues()
+			resetHands()
 			playBlackjack()
 		elif answer == "no":
 			print("Thanks for playing!")
