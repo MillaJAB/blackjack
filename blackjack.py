@@ -106,9 +106,11 @@ def hitOrStay():
 		my_hand.add_card(test_deck.deal())
 		showBettingHands()
 		checkBust()
-	if user_choice == "stay":
+	elif user_choice == "stay":
 		dealerTurn()
 		determineWinner()
+	else:
+		hitOrStay()
 		
 def dealerTurn():
 	showBettingHands()
@@ -134,6 +136,8 @@ def playAgain():
 		playBlackjack()
 	elif answer == "no":
 		print("Thanks for playing!")
+	else:
+		playAgain()
 
 def checkBust():
 	if my_hand.value > 21:
