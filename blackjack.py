@@ -113,13 +113,13 @@ def hitOrStay():
 def dealerTurn():
 	calculateHands()
 	while dealer_hand.value < 17:
-		print("Dealer hits")
+		print("\nDealer hits\n")
 		dealer_hand.add_card(test_deck.deal())
 		calculateHands()
 	if dealer_hand.value > 21:
 		print("Dealer busts! You win!")
 	else:
-		print("Dealer stays.")
+		print("\nDealer stays.\n")
 
 def checkBust():
 	if my_hand.value > 21:
