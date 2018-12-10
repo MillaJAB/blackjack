@@ -40,6 +40,7 @@ class Hand:
 		self.aces = 0
 	def add_card(self, single_card):
 		self.card.append(single_card)
+		self.value += values[single_card.rank]
 		return self.card
 	def adjust_for_ace(self):
 		pass
@@ -69,20 +70,15 @@ def startGame():
 	dealer_hand.add_card(test_deck.deal())
 
 def calculateHands():
-	resetValues()
 	print("\nYour cards are: ")
 	for card in range(len(my_hand.card)):
 		print(my_hand.card[card])
-	for card in my_hand.card:
-		my_hand.value += values[card.rank]
 
 	#Comment out unless to debug
 	print(my_hand.value)
 
 	print("\nThe dealer's is showing: ")
 	print(dealer_hand.card[0])	
-	for card in dealer_hand.card:
-		dealer_hand.value += values[card.rank]
 
 	#Comment out unless to debug
 	print(dealer_hand.value)
@@ -164,19 +160,14 @@ def determineWinner():
 			playAgain()
 
 def showHands():
-	resetValues()
 	print("Your cards are: ")
 	for card in range(len(my_hand.card)):
 		print(my_hand.card[card])
 	print("\n")
-	for card in my_hand.card:
-		my_hand.value += values[card.rank]
 
 	print("The dealer's cards are: ")
 	for card in range(len(dealer_hand.card)):
 		print(dealer_hand.card[card])
-	for card in dealer_hand.card:
-		dealer_hand.value += values[card.rank]
 
 def playBlackjack():
 	startGame()
