@@ -62,7 +62,7 @@ my_chips = Chips()
 def startGame():
 	test_deck.shuffle()
 	my_chips.bet = bet()
-	print("The user has bet $" + my_chips.bet + ". The dealer deals two cards to each player\n")
+	print("The user has bet $" + str(my_chips.bet) + ". The dealer deals two cards to each player\n")
 	my_hand.add_card(test_deck.deal())
 	dealer_hand.add_card(test_deck.deal())
 	my_hand.add_card(test_deck.deal())
@@ -95,9 +95,16 @@ def resetHands():
 	my_hand.card = []
 	dealer_hand.card = []
 
+def deductLosses():
+	my_chips.total -= my_chips.bet
+
+def addWinnings():
+	my_chips.total += my_chips.bet
+
 def bet():
+	print("You have $" + str(my_chips.total) + ".")
 	user_bet = input("How much would you like to wager? ")
-	return user_bet
+	return int(user_bet)
 
 def hitOrStay():
 	user_choice = input("\nWould you like to hit or stay? ")
@@ -118,6 +125,8 @@ def dealerTurn():
 	if dealer_hand.value > 21:
 		showHands()
 		print("\nDealer busts! You win!")
+		addWinnings()
+		print("Your bank has $" + str(my_chips.total) + ".")
 		playAgain()
 	else:
 		print("\nDealer stays.\n")
@@ -135,6 +144,8 @@ def playAgain():
 def checkBust():
 	if my_hand.value > 21:
 		print("BUST!")
+		deductLosses()
+		print("Your bank has $" + str(my_chips.total) + ".")
 		playAgain()
 	else:
 		hitOrStay()
@@ -143,10 +154,13 @@ def checkBust():
 def determineWinner():
 	if dealer_hand.value <= 21:
 		if my_hand.value > dealer_hand.value:
-			print("\nYou win!")
+			addWinnings()
+			print("\nYou win! Your bank has $" + str(my_chips.total) + ".")
 			playAgain()
 		else:
+			deductLosses()
 			print("\nDealer wins. Better luck next time.\n")
+			print("Your bank has $" + str(my_chips.total) + ".")
 			playAgain()
 
 def showHands():
