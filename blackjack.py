@@ -73,7 +73,7 @@ def startGame():
 	my_hand.add_card(test_deck.deal())
 	dealer_hand.add_card(test_deck.deal())
 
-def calculateHands():
+def showBettingHands():
 	print("\nYour cards are: ")
 	for card in range(len(my_hand.card)):
 		print(my_hand.card[card])
@@ -110,18 +110,18 @@ def hitOrStay():
 	user_choice = input("\nWould you like to hit or stay? ")
 	if user_choice == "hit":
 		my_hand.add_card(test_deck.deal())
-		calculateHands()
+		showBettingHands()
 		checkBust()
 	if user_choice == "stay":
 		dealerTurn()
 		determineWinner()
 		
 def dealerTurn():
-	calculateHands()
+	showBettingHands()
 	while dealer_hand.value < 17:
 		print("\nDealer hits\n")
 		dealer_hand.add_card(test_deck.deal())
-		calculateHands()
+		showBettingHands()
 	if dealer_hand.value > 21:
 		showHands()
 		print("\nDealer busts! You win!")
@@ -175,7 +175,7 @@ def showHands():
 
 def playBlackjack():
 	startGame()
-	calculateHands()
+	showBettingHands()
 	checkBust()
 
 playBlackjack()
