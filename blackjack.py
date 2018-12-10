@@ -118,28 +118,36 @@ def dealerTurn():
 	if dealer_hand.value > 21:
 		showHands()
 		print("\nDealer busts! You win!")
+		playAgain()
 	else:
 		print("\nDealer stays.\n")
 		showHands()
 
+def playAgain():
+	answer = input("Would you like to play again? ")
+	if answer == "yes":
+		resetValues()
+		resetHands()
+		playBlackjack()
+	elif answer == "no":
+		print("Thanks for playing!")
+
 def checkBust():
 	if my_hand.value > 21:
-		answer = input("BUST! Would you like to play again? ")
-		if answer == "yes":
-			resetValues()
-			resetHands()
-			playBlackjack()
-		elif answer == "no":
-			print("Thanks for playing!")
+		print("BUST!")
+		playAgain()
 	else:
 		hitOrStay()
+
 
 def determineWinner():
 	if dealer_hand.value <= 21:
 		if my_hand.value > dealer_hand.value:
 			print("\nYou win!")
+			playAgain()
 		else:
-			print("Dealer wins. Better luck next time.")
+			print("\nDealer wins. Better luck next time.\n")
+			playAgain()
 
 def showHands():
 	resetValues()
