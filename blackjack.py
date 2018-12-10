@@ -108,6 +108,7 @@ def hitOrStay():
 	if user_choice == "stay":
 		dealerTurn()
 		print("Dealer stays.")
+		determineWinner()
 		
 def dealerTurn():
 	calculateHands()
@@ -130,6 +131,14 @@ def checkBust():
 			print("Thanks for playing!")
 	else:
 		hitOrStay()
+
+def determineWinner():
+	if my_hand.value > dealer_hand.value:
+		print("You win!")
+		checkBust()
+	else:
+		print("Dealer wins. Better luck next time.")
+		checkBust()
 
 def playBlackjack():
 	startGame()
