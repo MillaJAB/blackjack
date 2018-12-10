@@ -55,9 +55,9 @@ class Chips:
 		self.total = 100
 		self.bet = 0
 	def win_bet(self):
-		pass
+		my_chips.total += my_chips.bet
 	def lose_bet(self):
-		pass
+		my_chips.total -= my_chips.bet
 
 test_deck = Deck()
 my_hand = Hand()
@@ -95,12 +95,6 @@ def resetHands():
 	my_hand.card = []
 	dealer_hand.card = []
 
-def deductLosses():
-	my_chips.total -= my_chips.bet
-
-def addWinnings():
-	my_chips.total += my_chips.bet
-
 def bet():
 	print("You have $" + str(my_chips.total) + ".")
 	user_bet = input("How much would you like to wager? ")
@@ -125,7 +119,7 @@ def dealerTurn():
 	if dealer_hand.value > 21:
 		showHands()
 		print("\nDealer busts! You win!")
-		addWinnings()
+		my_chips.win_bet()
 		print("Your bank has $" + str(my_chips.total) + ".")
 		playAgain()
 	else:
@@ -144,7 +138,7 @@ def playAgain():
 def checkBust():
 	if my_hand.value > 21:
 		print("BUST!")
-		deductLosses()
+		my_chips.lose_bet()
 		print("Your bank has $" + str(my_chips.total) + ".")
 		playAgain()
 	else:
@@ -154,11 +148,11 @@ def checkBust():
 def determineWinner():
 	if dealer_hand.value <= 21:
 		if my_hand.value > dealer_hand.value:
-			addWinnings()
+			my_chips.win_bet()
 			print("\nYou win! Your bank has $" + str(my_chips.total) + ".")
 			playAgain()
 		else:
-			deductLosses()
+			my_chips.lose_bet()
 			print("\nDealer wins. Better luck next time.\n")
 			print("Your bank has $" + str(my_chips.total) + ".")
 			playAgain()
