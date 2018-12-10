@@ -41,7 +41,7 @@ class Hand:
 	def add_card(self, single_card):
 		self.card.append(single_card)
 		self.value += values[single_card.rank]
-		if single_card.rank == "Ace":
+		if single_card.rank == 'Ace':
 			self.aces += 1
 		return self.card
 	def adjust_for_ace(self):
@@ -141,10 +141,14 @@ def playAgain():
 
 def checkBust():
 	if my_hand.value > 21:
-		print("BUST!")
-		my_chips.lose_bet()
-		print("Your bank has $" + str(my_chips.total) + ".")
-		playAgain()
+		my_hand.adjust_for_ace()
+		if my_hand.value > 21:
+			print("BUST!")
+			my_chips.lose_bet()
+			print("Your bank has $" + str(my_chips.total) + ".")
+			playAgain()
+		else:
+			hitOrStay()
 	else:
 		hitOrStay()
 
