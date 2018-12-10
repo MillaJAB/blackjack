@@ -41,9 +41,13 @@ class Hand:
 	def add_card(self, single_card):
 		self.card.append(single_card)
 		self.value += values[single_card.rank]
+		if single_card.rank == "Ace":
+			self.aces += 1
 		return self.card
 	def adjust_for_ace(self):
-		pass
+		while self.value > 21 and self.aces > 0:
+			self.value -= 10
+			self.aces -= 1
 
 
 class Chips:
