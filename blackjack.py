@@ -70,7 +70,7 @@ def startGame():
 
 def calculateHands():
 	resetValues()
-	print("Your cards are: ")
+	print("\nYour cards are: ")
 	for card in range(len(my_hand.card)):
 		print(my_hand.card[card])
 	for card in my_hand.card:
@@ -107,7 +107,6 @@ def hitOrStay():
 		checkBust()
 	if user_choice == "stay":
 		dealerTurn()
-		showHands()
 		determineWinner()
 		
 def dealerTurn():
@@ -117,9 +116,11 @@ def dealerTurn():
 		dealer_hand.add_card(test_deck.deal())
 		calculateHands()
 	if dealer_hand.value > 21:
-		print("Dealer busts! You win!")
+		showHands()
+		print("\nDealer busts! You win!")
 	else:
 		print("\nDealer stays.\n")
+		showHands()
 
 def checkBust():
 	if my_hand.value > 21:
@@ -136,7 +137,7 @@ def checkBust():
 def determineWinner():
 	if dealer_hand.value <= 21:
 		if my_hand.value > dealer_hand.value:
-			print("You win!")
+			print("\nYou win!")
 		else:
 			print("Dealer wins. Better luck next time.")
 
