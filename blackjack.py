@@ -102,7 +102,11 @@ def resetHands():
 def bet():
 	print("You have $" + str(my_chips.total) + ".")
 	user_bet = input("How much would you like to wager? ")
-	return int(user_bet)
+	if int(user_bet) > int(my_chips.total):
+		print("You don't have the dough, chief")
+		bet()
+	else:
+		return int(user_bet)
 
 def hitOrStay():
 	user_choice = input("\nWould you like to hit or stay? ")
