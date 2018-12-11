@@ -48,7 +48,6 @@ class Hand:
 		while self.value > 21 and self.aces > 0:
 			self.value -= 10
 			self.aces -= 1
-# There's a bug where the dealer's Ace got deducted from the user's hand.
 
 class Chips:
 	def __init__(self):
@@ -141,6 +140,7 @@ def playAgain():
 	if answer == "yes":
 		resetValues()
 		resetHands()
+		test_deck.__init__()
 		playBlackjack()
 	elif answer == "no":
 		print("Thanks for playing!")
@@ -184,3 +184,6 @@ def playBlackjack():
 	checkBust()
 
 playBlackjack()
+
+
+
