@@ -3,7 +3,6 @@ import random
 suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
 ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
 values = {'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7, 'Eight': 8, 'Nine': 9, 'Ten': 10, 'Jack': 10, 'Queen': 10, 'King': 10, 'Ace': 11}
-playing = True
 
 class Card:
 	def __init__(self, suit, rank):
@@ -82,13 +81,13 @@ def showBettingHands():
 		print(my_hand.card[card])
 
 	#Comment out unless to debug
-	print(my_hand.value)
+	# print(my_hand.value)
 
 	print("\nThe dealer's is showing: ")
 	print(dealer_hand.card[0])	
 
 	#Comment out unless to debug
-	print(dealer_hand.value)
+	# print(dealer_hand.value)
 
 def resetValues():
 	my_hand.value = 0
@@ -100,12 +99,15 @@ def resetHands():
 
 def bet():
 	print("You have $" + str(my_chips.total) + ".")
-	user_bet = input("How much would you like to wager? ")
-	if int(user_bet) > int(my_chips.total):
-		print("You don't have the dough, chief")
-		bet()
-	else:
-		return int(user_bet)
+	while True:
+		try:
+			user_bet = int(input("How much would you like to wager? "))
+			if user_bet > int(my_chips.total):
+				print("You don't have the dough, chief")
+			else:
+				return user_bet
+		except:
+			print("Sorry, please provide an integer.")
 
 def hitOrStay():
 	user_choice = input("\nWould you like to hit or stay? ")
