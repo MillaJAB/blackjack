@@ -74,9 +74,9 @@ def startGame():
 	dealer_hand.add_card(test_deck.deal())
 
 def showBettingHands():
-	if my_hand.value > 21:
+	if my_hand.value > 21 and my_hand.aces > 0:
 		my_hand.adjust_for_ace()
-	if dealer_hand.value > 21:
+	if dealer_hand.value > 21 and dealer_hand.aces > 0:
 		dealer_hand.adjust_for_ace()
 	print("\nYour cards are: ")
 	for card in range(len(my_hand.card)):
