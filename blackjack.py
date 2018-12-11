@@ -74,6 +74,10 @@ def startGame():
 	dealer_hand.add_card(test_deck.deal())
 
 def showBettingHands():
+	if my_hand.value > 21:
+		my_hand.adjust_for_ace()
+	if dealer_hand.value > 21:
+		dealer_hand.adjust_for_ace()
 	print("\nYour cards are: ")
 	for card in range(len(my_hand.card)):
 		print(my_hand.card[card])
@@ -141,17 +145,12 @@ def playAgain():
 
 def checkBust():
 	if my_hand.value > 21:
-		my_hand.adjust_for_ace()
-		if my_hand.value > 21:
-			print("BUST!")
-			my_chips.lose_bet()
-			print("Your bank has $" + str(my_chips.total) + ".")
-			playAgain()
-		else:
-			hitOrStay()
+		print("BUST!")
+		my_chips.lose_bet()
+		print("Your bank has $" + str(my_chips.total) + ".")
+		playAgain()
 	else:
 		hitOrStay()
-
 
 def determineWinner():
 	if dealer_hand.value <= 21:
